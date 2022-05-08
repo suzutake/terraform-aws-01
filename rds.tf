@@ -17,12 +17,13 @@ resource "aws_db_instance" "dbserver-01" {
     port                      = 3306
     publicly_accessible       = false
     db_subnet_group_name      = "default-vpc-001"
-    availability_zone         =  "${var.region}"
-    vpc_security_group_ids    = ["${aws_security_group.db-sg.id}"]
+    availability_zone         = "us-west-2a"
+    //vpc_security_group_ids    = ["${aws_security_group.db-sg.id}"]
+    vpc_security_group_ids    = ["sg-0ed7d896d9f86721d"]
     multi_az                  = false
 
     // DB options
-    name                      = local.service_name
+    name                      = "dbserver-01"
     parameter_group_name      = "${aws_db_parameter_group.example.id}"
 
     // backup
@@ -32,8 +33,8 @@ resource "aws_db_instance" "dbserver-01" {
     final_snapshot_identifier = "database-1-final"
 
     // Monitoring
-    monitoring_interval = 60
-    monitoring_role_arn = aws_iam_role.rds_monitoring_role.arn
+    //monitoring_interval = 60
+    //monitoring_role_arn = aws_iam_role.rds_monitoring_role.arn
 
     // Log exports
     enabled_cloudwatch_logs_exports = [
