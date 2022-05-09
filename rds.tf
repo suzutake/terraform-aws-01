@@ -16,10 +16,9 @@ resource "aws_db_instance" "dbserver-01" {
     // Connectivity
     port                      = 3306
     publicly_accessible       = false
-    db_subnet_group_name      = "default-vpc-001"
+    db_subnet_group_name      = "${aws_subnet.subnet-private-subnet02.id}"
     availability_zone         = "us-west-2a"
-    //vpc_security_group_ids    = ["${aws_security_group.db-sg.id}"]
-    vpc_security_group_ids    = ["sg-0ed7d896d9f86721d"]
+    vpc_security_group_ids    = ["${aws_security_group.db-sg.id}"]
     multi_az                  = false
 
     // DB options
