@@ -1,11 +1,11 @@
 resource "aws_vpc" "vpc-001" {
-    cidr_block           = "10.0.0.0/16"
+    cidr_block           = var.cidr // main.tfから変数で受け取る
     enable_dns_hostnames = true
     enable_dns_support   = true
     instance_tenancy     = "default"
 
     tags = {
-      name = "vpc-001"
+      name = "${var.env}-vpc"
     }
 }
 
