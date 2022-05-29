@@ -17,9 +17,10 @@ terraform {
 
 variable "access_key" {}
 variable "secret_key" {}
-variable "region" {}
 
+/*
 resource "aws_key_pair" "sample" {
   key_name   = "sample"
   public_key = file("./sample.pub")
 }
+*/
